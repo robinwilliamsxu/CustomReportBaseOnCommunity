@@ -38,7 +38,7 @@ import com.mentor.chs.api.report.IXReportTemplate;
 public class SimpleReport extends BaseReport implements IXLogicReport, IXHarnessReport {
 	
 	public SimpleReport() {
-		super("Wire List By Robin", "1.0", "Wire List By Robin");
+		super("[ Mentor ] Wire List By Robin", "1.0", "[ Mentor ]Wire List By Robin");
 	}
 
 
