@@ -73,7 +73,8 @@ public class BaseReport {
 		return m_version;
 	}
 
-	protected class AbstractResultExpression {
+	protected class AbstractResultExpression 
+        {
 
 		public String getName() {
 			return "";

@@ -38,7 +38,7 @@ import com.mentor.chs.api.report.IXReportTemplate;
 public class SimpleReport extends BaseReport implements IXLogicReport, IXHarnessReport {
 	
 	public SimpleReport() {
-		super("Wire List By Harness", "1.0", "Wire List By Harness");
+		super("Wire List By Robin", "1.0", "Wire List By Robin");
 	}
 
 
@@ -59,7 +59,7 @@ public class SimpleReport extends BaseReport implements IXLogicReport, IXHarness
 			e.printStackTrace();
 		}
 
-		IXReport report = rf.createReport("Simple Wire List");
+		IXReport report = rf.createReport("Customized Wire List by Robin xu");
 		report.addModule(module);
 
 		IXReportTemplate column = rf.createReportTemplate(new AttributeResultExpression("Name"), "Wire Name");
@@ -75,6 +75,23 @@ public class SimpleReport extends BaseReport implements IXLogicReport, IXHarness
 		module.addReportTemplate(column);
 
 		column = rf.createReportTemplate(new AttributeResultExpression("WireLength"), "Length");
+		module.addReportTemplate(column);
+                
+                column = rf.createReportTemplate(new AttributeResultExpression("OptionExpression"), "Option");
+		module.addReportTemplate(column);
+                
+                column = rf.createReportTemplate(new ConnectorResultExpression(0), "Connector");
+		module.addReportTemplate(column);
+                column = rf.createReportTemplate(new PinResultExpression(0), "PinOne");
+		module.addReportTemplate(column);
+                column = rf.createReportTemplate(new ConnectedPinListResultExpression(0), "FromDevice");
+		module.addReportTemplate(column);
+                                             
+                column = rf.createReportTemplate(new ConnectorResultExpression(1), "Connector");
+		module.addReportTemplate(column);
+                column = rf.createReportTemplate(new PinResultExpression(1), "PinTwo");
+		module.addReportTemplate(column);
+                column = rf.createReportTemplate(new ConnectedPinListResultExpression(1), "ToDevice");
 		module.addReportTemplate(column);
 
 		return report;
