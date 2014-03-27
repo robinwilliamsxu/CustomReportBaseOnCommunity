@@ -39,10 +39,10 @@ import com.mentor.chs.api.report.IXReportFactory;
 import com.mentor.chs.api.report.IXReportModule;
 import com.mentor.chs.api.report.IXReportTemplate;
 
-public class SimpleItemReport extends BaseReport implements IXLogicReport, IXHarnessReport {
+public class SimpleInsulationReport extends BaseReport implements IXLogicReport, IXHarnessReport {
 	
-	public SimpleItemReport() {
-		super("[ Mentor ] Item List By Robin", "1.0", "[ Mentor ] Item List By Robin");
+	public SimpleInsulationReport() {
+		super("[ Mentor ] Insulation List By Robin", "1.0", "[ Mentor ] Insulation List By Robin");
 	}
 
 
@@ -55,47 +55,58 @@ public class SimpleItemReport extends BaseReport implements IXLogicReport, IXHar
 		IXReportModule module = rf.createReportModule("");
 		
 		try {
-			query = qf.createQuery(IXDevice.class, "Device", (IXFilterExpression) null );
+			query = qf.createQuery(IXInsulation.class, "Insulation", (IXFilterExpression) null );
 			module.addQuery(query, "");
-			query = qf.createQuery(IXConnector.class, "Connector", (IXFilterExpression) null );
-			module.addQuery(query, "");
-                        
 		} catch (NoSuchFieldException e) {
 			e.printStackTrace();
 		}
 
-		IXReport report = rf.createReport("Customized Item List by Robin xu");
+		IXReport report = rf.createReport("Customized Insulation List by Robin xu");
 		report.addModule(module);
 
-		IXReportTemplate column = rf.createReportTemplate(new AttributeResultExpression("Design"), "Design");
+		IXReportTemplate column = rf.createReportTemplate(new BaseReport.AttributeResultExpression("Design"), "Design");
 		module.addReportTemplate(column); 
                 
-                column = rf.createReportTemplate(new AttributeResultExpression("Name"), "Item Name");
+                column = rf.createReportTemplate(new BaseReport.AttributeResultExpression("Name"), "Item Name");
 		module.addReportTemplate(column);
                 
-                column = rf.createReportTemplate(new AttributeResultExpression("PartAssigned"), "PartAssigned");
+                column = rf.createReportTemplate(new BaseReport.AttributeResultExpression("PartAssigned"), "PartAssigned");
 		module.addReportTemplate(column);
                 
-		column = rf.createReportTemplate(new AttributeResultExpression("PartNumber"), "PN");
+		column = rf.createReportTemplate(new BaseReport.AttributeResultExpression("PartNumber"), "PN");
+		module.addReportTemplate(column);
+                
+                column = rf.createReportTemplate(new BaseReport.AttributeResultExpression("SupplierName"), "SupplierName");
 		module.addReportTemplate(column);
 
-		column = rf.createReportTemplate(new LibraryAttributeResultExpression("Description"), "Description");
+		column = rf.createReportTemplate(new BaseReport.LibraryAttributeResultExpression("Description"), "Description");
 		module.addReportTemplate(column);
 
-		column = rf.createReportTemplate(new LibraryAttributeResultExpression("UnitOfMeasure"), "UnitOfMeasure");
+		column = rf.createReportTemplate(new BaseReport.LibraryAttributeResultExpression("UnitOfMeasure"), "UnitOfMeasure");
 		module.addReportTemplate(column);
                 
-                column = rf.createReportTemplate(new AttributeResultExpression("IncludeOnBOM"), "IncludeOnBOM");
+                column = rf.createReportTemplate(new BaseReport.LibraryAttributeResultExpression("ColorCode"), "ColorCode");
 		module.addReportTemplate(column);
                 
-                column = rf.createReportTemplate(new AttributeResultExpression("Quantity"), "Quantity");
+                column = rf.createReportTemplate(new BaseReport.LibraryAttributeResultExpression("Thickness"), "Thickness");
 		module.addReportTemplate(column);
                 
-                            
-                column = rf.createReportTemplate(new AttributeResultExpression("TypeCode"), "TypeCode");
+                column = rf.createReportTemplate(new BaseReport.AttributeResultExpression("IncludeOnBOM"), "IncludeOnBOM");
 		module.addReportTemplate(column);
                 
-                column = rf.createReportTemplate(new AttributeResultExpression("Harness"), "HarnessAttribute");
+                column = rf.createReportTemplate(new BaseReport.AttributeResultExpression("InsulatedLength"), "InsulatedLength");
+		module.addReportTemplate(column);
+                
+                column = rf.createReportTemplate(new BaseReport.AttributeResultExpression("TypeCode"), "TypeCode");
+		module.addReportTemplate(column);
+                
+                column = rf.createReportTemplate(new BaseReport.AttributeResultExpression("Convoluted"), "Convoluted");
+		module.addReportTemplate(column);
+                
+                column = rf.createReportTemplate(new BaseReport.AttributeResultExpression("Slit"), "Slit");
+		module.addReportTemplate(column);
+                
+                column = rf.createReportTemplate(new BaseReport.AttributeResultExpression("Harness"), "HarnessAttribute");
 		module.addReportTemplate(column);
 
 //		column = rf.createReportTemplate(new AttributeResultExpression("WireLength"), "Length");
