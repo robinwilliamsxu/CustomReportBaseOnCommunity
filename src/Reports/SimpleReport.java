@@ -85,13 +85,19 @@ public class SimpleReport extends BaseReport implements IXLogicReport, IXHarness
                 column = rf.createReportTemplate(new PinResultExpression(0), "PinOne");
 		module.addReportTemplate(column);
                 column = rf.createReportTemplate(new ConnectedPinListResultExpression(0), "FromDevice");
+                module.addReportTemplate(column);
+                column = rf.createReportTemplate(new TerminalResultExpression(0),"terminal");
 		module.addReportTemplate(column);
+               
+                
                                              
                 column = rf.createReportTemplate(new ConnectorResultExpression(1), "Connector");
 		module.addReportTemplate(column);
                 column = rf.createReportTemplate(new PinResultExpression(1), "PinTwo");
 		module.addReportTemplate(column);
                 column = rf.createReportTemplate(new ConnectedPinListResultExpression(1), "ToDevice");
+		module.addReportTemplate(column);
+                 column = rf.createReportTemplate(new TerminalResultExpression(1),"terminal");
 		module.addReportTemplate(column);
 
 		return report;

@@ -64,10 +64,9 @@ public class SimpleInsulationReport extends BaseReport implements IXLogicReport,
 		IXReport report = rf.createReport("Customized Insulation List by Robin xu");
 		report.addModule(module);
 
-		IXReportTemplate column = rf.createReportTemplate(new BaseReport.AttributeResultExpression("Design"), "Design");
-		module.addReportTemplate(column); 
+		
                 
-                column = rf.createReportTemplate(new BaseReport.AttributeResultExpression("Name"), "Item Name");
+                IXReportTemplate column = rf.createReportTemplate(new BaseReport.AttributeResultExpression("Name"), "Item Name");
 		module.addReportTemplate(column);
                 
                 column = rf.createReportTemplate(new BaseReport.AttributeResultExpression("PartAssigned"), "PartAssigned");
@@ -105,29 +104,7 @@ public class SimpleInsulationReport extends BaseReport implements IXLogicReport,
                 
                 column = rf.createReportTemplate(new BaseReport.AttributeResultExpression("Slit"), "Slit");
 		module.addReportTemplate(column);
-                
-                column = rf.createReportTemplate(new BaseReport.AttributeResultExpression("Harness"), "HarnessAttribute");
-		module.addReportTemplate(column);
 
-//		column = rf.createReportTemplate(new AttributeResultExpression("WireLength"), "Length");
-//		module.addReportTemplate(column);
-//                
-//                column = rf.createReportTemplate(new AttributeResultExpression("OptionExpression"), "Option");
-//		module.addReportTemplate(column);
-//                
-//                column = rf.createReportTemplate(new ConnectorResultExpression(0), "Connector");
-//		module.addReportTemplate(column);
-//                column = rf.createReportTemplate(new PinResultExpression(0), "PinOne");
-//		module.addReportTemplate(column);
-//                column = rf.createReportTemplate(new ConnectedPinListResultExpression(0), "FromDevice");
-//		module.addReportTemplate(column);
-//                                             
-//                column = rf.createReportTemplate(new ConnectorResultExpression(1), "Connector");
-//		module.addReportTemplate(column);
-//                column = rf.createReportTemplate(new PinResultExpression(1), "PinTwo");
-//		module.addReportTemplate(column);
-//                column = rf.createReportTemplate(new ConnectedPinListResultExpression(1), "ToDevice");
-//		module.addReportTemplate(column);
 
 		return report;
 	}

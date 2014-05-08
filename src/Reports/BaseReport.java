@@ -7,6 +7,7 @@ import com.mentor.chs.api.IXLibrariedObject;
 import com.mentor.chs.api.IXLibraryObject;
 import com.mentor.chs.api.IXObject;
 import com.mentor.chs.api.IXWire;
+import com.mentor.chs.api.IXWireEnd;
 import com.mentor.chs.api.query.IXFilterExpression;
 import com.mentor.chs.api.query.IXQuery;
 import com.mentor.chs.api.query.IXQueryFactory;
@@ -135,6 +136,32 @@ public class BaseReport {
 					if (i == m_index) {
 
 						return abstractPin.getAttribute("Name");
+					}
+					++i;
+				}
+			}
+			return "";
+		}
+
+	}
+        
+        public class TerminalResultExpression extends AbstractResultExpression implements IXResultExpression {
+
+		private int m_index;
+
+		public TerminalResultExpression(int i) {
+			m_index = i;
+		}
+
+		public Object evaluate(IXObject entity) {
+			if (entity instanceof IXWire) {
+				IXWire wire = (IXWire) entity;
+				Set<IXWireEnd> pins = wire.getWireEnds();
+				int i = 0;
+				// assumes that pins are already ordered.
+				for (IXWireEnd abstractPin : pins) {
+                                    if (i == m_index) {
+						return abstractPin.getAttribute("TerminalInternalPartNumber");
 					}
 					++i;
 				}
